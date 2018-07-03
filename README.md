@@ -7,7 +7,7 @@ If more than one recipe is found, then preference should be given to the recipe 
 
 Note: In this program, if two recipes have the ingredients with the same closest use-by date, the program will compare the second closest use-by dates of these two recipes. See branch 12.
 
-1. Click the link below
+1. Click the link below(make sure you are using Windows)
 
 https://recipefinder.shinyapps.io/recipefinder/
 
