@@ -24,6 +24,7 @@ ui <- fluidPage(
     ),
     # Main panel for displaying outputs ----
     mainPanel(
+      h2("What to cook tonight?"),
       textOutput("result")
     )
   )
