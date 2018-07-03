@@ -3,6 +3,13 @@ library(R6)
 RecipeFinder <- R6Class(
   "RecipeFinder",
   public = list(
+    
+    # function:     valid_json
+    # input   :     file_path: String 
+    # return  :     file: List
+    # if file type is wrong, or keys don't match keys required,
+    # return NULL
+    # otherwise, return file content
     valid_json = function(file_path )
     {
       file <- tryCatch(
@@ -42,6 +49,14 @@ RecipeFinder <- R6Class(
      return (file)
     },
     
+    # function:     valid_csv
+    # input   :     file_path: String 
+    # return  :     List
+    # if file type is wrong, return NULL
+    # if headers don't match headers required, return NULL 
+    # if data type doesn't match header, return NULL
+    # return NULL
+    # otherwise, return file content
     valid_csv = function(file_path, headers = NULL, types)
     {
       #is csv
@@ -98,16 +113,32 @@ RecipeFinder <- R6Class(
       
       
     },
+    
+    # function:     remove_zero
+    # input   :     data: list; coloum: String 
+    # return  :     List
+    # description:  remove rows with 0 value.
     remove_zero = function(data, coloum ='amount')
     {
       return(subset(data, data[[coloum]]> 0))
     },
+    
+    
+    # function:     remove_out_of_date
+    # input   :     data: list; coloum: String 
+    # return  :     List
+    # description:  remove rows out of date
     remove_out_of_date = function(data,coloum, sysDate = Sys.Date())
     {
       data <- self$remove_zero(data)
       data <- subset(data, data[[coloum]]> sysDate)
       return (data)
     },
+    
+    # function:     search_dishes
+    # input   :     recipes: list; ingredients: list 
+    # return  :     dishes:List
+    # description:  find dishes can be made
     search_dishes = function(recipes, ingredients)
     {
       # print("##############")
@@ -144,6 +175,15 @@ RecipeFinder <- R6Class(
       }
       return (dishes)
     },
+    
+    # function:     search_closest
+    # input   :     dishes: dictionary of list of Date
+    # return  :     dishes
+    # description:  search_closest dishes from dishes can be made
+    #   if two recipes have the ingredients with the same closest use-by date, 
+    #   the program will compare the second closest use-by dates of these two recipes,
+    #   and so forth
+    #   until find the most closet use-by dish
     search_closest = function(dishes)
     {
       same     <- all(sapply(dishes, function(x) all(x == dishes[[1]])))
