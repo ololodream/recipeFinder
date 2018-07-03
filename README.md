@@ -1,37 +1,50 @@
 "# recipeFinder" 
+# Introduction:
+
+This is a web application. Given a list of items in the fridge (presented as a csv list), and a collection of recipes (a collection of JSON formatted recipes), produce a recommendation for what to cook tonight.
+ 
+If more than one recipe is found, then preference should be given to the recipe with the closest use-by item If no recipe is found, the program should return “Order Takeout”. Using the sample input(recipe.json and fridge.csv) , the program should return "Salad Sandwich".
+
+Note: In this program, if two recipes have the ingredients with the same closest use-by date, the program will compare the second closest use-by dates of these two recipes. See branch 12.
+
+1. Click the link below
 
 https://recipefinder.shinyapps.io/recipefinder/
 
+2. Upload your recipe (.json) and fridge (.csv) files, you can customize them or simply choose them from folder "file2"
 
-# requirements
-Given a list of items in the fridge (presented as a csv list), and a collection of recipes (a collection of JSON formatted recipes), produce a recommendation for what to cook tonight.
+3. The result will show the best choice of what to cook
 
-Program should be written to take two inputs; fridge csv list, and the json recipe data. You can write it as a web page which takes input through a form. The only rule is that it must run and return a valid result using the provided input data. 
+# file structure
 
-Input: fridge csv Format: item, amount, unit, use-by ;
+server: server.R
 
-Item (string) = the name of the ingredient – e.g. egg)
+layout: ui.R 
 
-Amount (int) = the amount 
+class： RecipeFinder.R
 
-Unit (enum) = the unit of measure, values; of (for individual items; eggs, bananas etc) grams ml (milliliters) slices
+static data： global.R
 
-Use-By (date) = the use by date of the ingredient (dd/mm/yy)
+# testing
 
-e.g.
-bread,10,slices,25/12/2014 cheese,10,slices,25/12/2014 butter,250,grams,25/12/2014 peanut butter,250,grams,2/12/2014 mixed salad,150,grams,26/12/2013
-recipes json Array of recipes with format specified as below
-name : String ingredients[] item : String amount : int unit : enum
 
-e.g. [
-{
-"name": "grilled cheese on toast", "ingredients": [ { "item":"bread", "amount":"2", "unit":"slices"}, { "item":"cheese", "amount":"2", "unit":"slices"}
-]
-} , {
-"name": "salad sandwich", "ingredients": [
-{ "item":"bread", "amount":"2", "unit":"slices"}, { "item":"mixed salad", "amount":"100", "unit":"grams"}
-] }
-]
-# Notes
-An ingredient that is past its use-by date cannot be used for cooking. If more than one recipe is found, then preference should be given to the recipe with the closest use-by item If no recipe is found, the program should return “Order Takeout” Program should be all-inclusive and a run script (if required) included Please include evidence of unit testing
-Using the sample input above, the program should return "Salad Sandwich".
+
+ 1. Coverage Testing
+ 
+ script that automatically executes testing: test_script.R
+ 
+branch coverage testing cases: files2
+
+test result:  test_result.xlsx
+
+In this project, I apply branch-coverage-based testing method and control-flow graphs to cover the program with test cases. Every possible alternative in a branch of the program is executed at least once by that test cases, and each test case represents one branch or path exists in the program. Furthermore, all the actual outputs is the same as expected outputs under this test.
+
+  2. Penetration Testing
+ 
+fuzz testing tool that generates test cases: RecipeFinderFuzzer.py
+ 
+penetration testing cases:files
+
+result:  ptest_result.xlsx
+
+To test the security of the program, I designed a fuzz testing tool to detect program behaviors such as exceptions, segmentation faults and memory leaks. The fuzzing tool is generation-based that preserves the structure and grammar of .json and .csv files, and randomly modifies parts of value within that structures. For example, some of the fuzzer files only replace the value of the key "amount", making it less than zero. Through analysing the testing results, the program passes the penetration test and could be proved to be secure.
