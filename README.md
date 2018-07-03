@@ -9,7 +9,7 @@ Note: In this program, if two recipes have the ingredients with the same closest
 
 1. Click the link below(make sure you are using Windows)
 
-https://recipefinder.shinyapps.io/recipefinder/
+https://recipefinder.shinyapps.io/recipefinder4/
 
 2. Upload your recipe (.json) and fridge (.csv) files, you can customize them or simply choose them from folder "file2"
 
