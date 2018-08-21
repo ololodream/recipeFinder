@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="9957" started-at="2018-08-16T04:18:09Z" finished-at="2018-08-16T04:18:19Z">
+  <suite name="Default suite" duration-ms="9201" started-at="2018-08-20T02:32:16Z" finished-at="2018-08-20T02:32:26Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="9957" started-at="2018-08-16T04:18:09Z" finished-at="2018-08-16T04:18:19Z">
+    <test name="Default test" duration-ms="9201" started-at="2018-08-20T02:32:16Z" finished-at="2018-08-20T02:32:26Z">
       <class name="myGroup.RESTAPITest">
-        <test-method status="PASS" signature="getPro()[pri:0, instance:myGroup.RESTAPITest@1ed4004b]" name="getPro" is-config="true" duration-ms="27" started-at="2018-08-16T14:18:09Z" finished-at="2018-08-16T14:18:09Z">
+        <test-method status="PASS" signature="getPro()[pri:0, instance:myGroup.RESTAPITest@5b12b668]" name="getPro" is-config="true" duration-ms="0" started-at="2018-08-20T12:32:16Z" finished-at="2018-08-20T12:32:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getPro -->
-        <test-method status="PASS" signature="JiraAPI()[pri:0, instance:myGroup.RESTAPITest@1ed4004b]" name="JiraAPI" duration-ms="9891" started-at="2018-08-16T14:18:09Z" finished-at="2018-08-16T14:18:19Z">
+        <test-method status="PASS" signature="jiraCreateIssue()[pri:0, instance:myGroup.RESTAPITest@5b12b668]" name="jiraCreateIssue" duration-ms="6994" started-at="2018-08-20T12:32:16Z" finished-at="2018-08-20T12:32:23Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- JiraAPI -->
+        </test-method> <!-- jiraCreateIssue -->
+        <test-method status="PASS" signature="JiraAddComment()[pri:0, instance:myGroup.RESTAPITest@5b12b668]" name="JiraAddComment" duration-ms="504" started-at="2018-08-20T12:32:23Z" finished-at="2018-08-20T12:32:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- JiraAddComment -->
+        <test-method status="PASS" signature="JiraUpdateComment()[pri:0, instance:myGroup.RESTAPITest@5b12b668]" name="JiraUpdateComment" duration-ms="1663" started-at="2018-08-20T12:32:24Z" finished-at="2018-08-20T12:32:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- JiraUpdateComment -->
       </class> <!-- myGroup.RESTAPITest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

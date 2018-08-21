@@ -22,19 +22,4 @@ public class ReusableMethods {
 		JsonPath x = new JsonPath(response);
 		return x;
 	}
-	public static String getSessionId()
-	{
-		RestAssured.baseURI= "http://localhost:8080";
-		Response res = given().header("Content-Type","application/json").
-		body("{ \"username\": \"cmengj02\", \"password\": \"02108Xcmj\" }").
-		when().
-		post("/rest/auth/1/session").then().statusCode(200).
-		extract().response();
-		
-		JsonPath js = ReusableMethods.rawToJson(res);
-		String session_id = js.get("session.value"); 
-		System.out.println("========session id========");
-		System.out.println(session_id);
-		return session_id;
-	}
 }

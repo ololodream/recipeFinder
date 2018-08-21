@@ -5,8 +5,10 @@
     <classes>
       <class name="myGroup.RESTAPITest">
         <methods>
+          <include name="JiraAddComment"/>
+          <include name="JiraUpdateComment"/>
+          <include name="jiraCreateIssue"/>
           <include name="getPro"/>
-          <include name="JiraAPI"/>
         </methods>
       </class> <!-- myGroup.RESTAPITest -->
     </classes>

@@ -7,15 +7,10 @@ public class Payload {
 		String body = "{"+
 
 				   "\"FirstName\" : \"value_miya\","+
-				
 				   "\"LastName\" : \"value_chen\","+
-				
 				   "\"UserName\" : \"value_miya05\","+
-				
 				   "\"Password\" : \"value\","+
-				
 				   "\"Email\"        : \"cmengj05@gmail.com\""+
-				
 					"}";
 		return body;
 	}
